@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "codeformy": {
+      "hosting": {
+        "myApp": [
+          "codeformy"
+        ]
+      }
+    }
+  }
+}
