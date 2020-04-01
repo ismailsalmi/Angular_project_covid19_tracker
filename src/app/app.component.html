@@ -3,7 +3,7 @@
     <span class="Gfont">Covid19</span>
     <span class="example-spacer"></span>
     <div class="uk-margin Gfont uk-text-small">
-        <input class="uk-input uk-search-input" type="text" [(ngModel)]="searchCountry" placeholder="Search ...">
+        <!-- <input class="uk-input uk-search-input" type="text" [(ngModel)]="searchCountry" placeholder="Search ..."> -->
     </div>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>sort</mat-icon>
@@ -25,7 +25,7 @@
 </div>
 <ng-template #thenBlock>
   <div class="uk-column-1-1@s uk-column-1-2@m uk-column-1-2@l uk-column-1-2@xl">
-    <div *ngFor="let item of listCountry | filter:searchCountry | sortBy:'desc':menuItemSalect">
+    <div *ngFor="let item of listCountry  | sortBy:'desc':menuItemSalect">
       <div class="uk-flex uk-padding-small uk-grid-match" uk-grid>
         <div class="uk-card uk-card-default uk-card-body">
           <h2 class="uk-card-title Gfont">{{item.country | titlecase}}</h2>
