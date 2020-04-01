@@ -1,18 +1,34 @@
-<div *ngIf="listCountry !=''">
-  <div class="uk-padding-small Gfont">
-    <input class="uk-input" type="text" placeholder="Search ...">
-  </div>
-</div>
+<mat-toolbar color="light" uk-sticky>
+  <mat-toolbar-row>
+    <span class="Gfont">Covid19</span>
+    <span class="example-spacer"></span>
+    <div class="uk-margin Gfont uk-text-small">
+        <input class="uk-input uk-search-input" type="text" [(ngModel)]="searchCountry" placeholder="Search ...">
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>sort</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-<div *ngIf="listCountry ==''; else thenBlock">
+<mat-menu #menu="matMenu">
+  <div *ngFor="let state of states">
+    <button mat-menu-item (click)="onseSelectMenu(state)"><span class="Gfont">{{state | titlecase}}</span></button>
+  </div>
+</mat-menu>
+
+<div *ngIf="listCountry =='' && isNotData == false; else thenBlock">
   <div class="uk-position-center" uk-spinner></div>
 </div>
+<div *ngIf="isNotData" class="uk-position-center">
+  <button mat-raised-button (click)="refreshPage()">Refresh</button>
+</div>
 <ng-template #thenBlock>
-  <div class="uk-column-1-1@s uk-column-1-2@m uk-column-1-2@l uk-column-1-2@xl uk-padding-remove">
-  <div *ngFor="let item of listCountry | sortBy:'desc':'cases'">
-      <div class="uk-flex uk-padding-small">
+  <div class="uk-column-1-1@s uk-column-1-2@m uk-column-1-2@l uk-column-1-2@xl">
+    <div *ngFor="let item of listCountry | filter:searchCountry | sortBy:'desc':menuItemSalect">
+      <div class="uk-flex uk-padding-small uk-grid-match" uk-grid>
         <div class="uk-card uk-card-default uk-card-body">
-          <h2 class="uk-card-title Gfont">Country : {{item.country}}</h2>
+          <h2 class="uk-card-title Gfont">{{item.country | titlecase}}</h2>
           <p class="Gfont">
             Peoples active : <span class="uk-text-warning">{{item.active}}</span> | Peoples cases : <span
               class="uk-text-warning">{{item.cases}}</span>
@@ -31,7 +47,7 @@
 <div class="uk-position-bottom-right uk-position-fixed uk-padding-small">
   <!-- Scrol Back To Top -->
   <div *ngIf="isScrolled">
-    <button class="animated flipInX" mat-fab color="light" (click)="topFunction()" id="myBtn">
+    <button class="animated flipInX" mat-fab color="light" (click)="toTop()" id="myBtn">
       <mat-icon>arrow_upward</mat-icon>
     </button>
   </div>

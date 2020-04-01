@@ -1,3 +1,9 @@
+/* Google fonts  */
 .Gfont{
     font-family: 'Lemonada', cursive;
+}
+
+/* Toolbar  */
+.example-spacer {
+    flex: 1 1 auto;
 }

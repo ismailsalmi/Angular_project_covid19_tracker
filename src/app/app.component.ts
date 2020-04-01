@@ -1,5 +1,8 @@
 import { Component, HostListener } from '@angular/core';
+// Angular http request
 import { HttpClient } from '@angular/common/http';
+// Angular snackBar import 
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +12,15 @@ import { HttpClient } from '@angular/common/http';
 
 export class AppComponent {
 
+  states: any = [
+    'cases', 'deaths', 'active',
+    'critical', 'todayCases',
+    'todayDeaths']
   listCountry: any = []
   isScrolled: boolean = false
-  constructor(private http: HttpClient) { }
+  isNotData: boolean = false
+  menuItemSalect = 'cases'
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) { }
 
   // Api Read
   ngOnInit() {
@@ -20,8 +29,10 @@ export class AppComponent {
         this.listCountry = res
       },
         (err) => {
-          alert('Failed loading json data');
+          this.openSnackBar('Failed loading json data', '');
+          this.isNotData = true
         });
+
   }
 
   //scrol listening
@@ -36,11 +47,24 @@ export class AppComponent {
 
   }
   //back to top 
-  topFunction() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    // window.scrollTo(0, 0)
+  toTop() {
+    window.scrollTo(0, 0)
+  }
+  // SnackBar methods
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
+  // Refresh location page
+  refreshPage() {
+    window.location.reload();
+  }
+  // Select menu items
+  onseSelectMenu(pText :string)
+  {
+    this.menuItemSalect = pText;
+  }
 
 }

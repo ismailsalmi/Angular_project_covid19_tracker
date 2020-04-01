@@ -14,6 +14,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon'; 
 // Sort Items 
 import { NgpSortModule } from "ngp-sort-pipe";
+// Angular snackBar material
+import {MatSnackBarModule} from '@angular/material/snack-bar'; 
+// Angular material toolbar
+import {MatToolbarModule} from '@angular/material/toolbar'; 
+// Angular material menu
+import {MatMenuModule} from '@angular/material/menu'; 
+// filter library 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -27,7 +35,11 @@ import { NgpSortModule } from "ngp-sort-pipe";
     HttpClientModule,
     MatButtonModule,
     MatIconModule,
-    NgpSortModule
+    NgpSortModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatMenuModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
