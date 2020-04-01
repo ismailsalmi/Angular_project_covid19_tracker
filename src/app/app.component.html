@@ -1,34 +1,38 @@
-<div class="uk-container">
-<div class="uk-padding-small">
-  <input class="uk-input" type="text" placeholder="Search ...">
+<div *ngIf="listCountry !=''">
+  <div class="uk-padding-small Gfont">
+    <input class="uk-input" type="text" placeholder="Search ...">
+  </div>
 </div>
 
-<div *ngIf="listCountry == ''; else thenBlock">
+<div *ngIf="listCountry ==''; else thenBlock">
   <div class="uk-position-center" uk-spinner></div>
 </div>
-
 <ng-template #thenBlock>
-  <div *ngFor="let item of listCountry | sortBy:'desc':'cases'" class="uk-padding-small">
-
-    <div class="uk-card uk-card-default uk-card-body">
-      <h2 class="uk-card-title Gfont">Country : {{item.country}}</h2>
-      <p class="Gfont">
-        Peoples active : <span class="uk-text-warning">{{item.active}}</span> | Peoples cases : <span
-          class="uk-text-warning">
-          {{item.cases}}</span>
-        | Peoples critical : <span class="uk-text-danger">{{item.critical}}</span> |
-        Peoples deaths : <span class="uk-text-danger">{{item.deaths}}</span> | Peoples recovered : <span
-          class="uk-text-success">{{item.recovered}}</span>
-        | Peoples todayCases : <span class="uk-text-warning">{{item.todayCases}}</span> | Peoples todayDeaths
-        : <span class="uk-text-danger">{{item.todayDeaths}}</span>
-      </p>
+  <div class="uk-column-1-1@s uk-column-1-2@m uk-column-1-2@l uk-padding-remove">
+  <div *ngFor="let item of listCountry | sortBy:'desc':'cases'">
+      <div uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 100; repeat: true" class="uk-padding-small">
+        <div class="uk-card uk-card-default uk-card-body uk-card-hover">
+          <h2 class="uk-card-title Gfont">Country : {{item.country}}</h2>
+          <p class="Gfont">
+            Peoples active : <span class="uk-text-warning">{{item.active}}</span> | Peoples cases : <span
+              class="uk-text-warning">{{item.cases}}</span>
+            | Peoples critical : <span class="uk-text-danger">{{item.critical}}</span> |
+            Peoples deaths : <span class="uk-text-danger">{{item.deaths}}</span> | Peoples recovered : <span
+              class="uk-text-success">{{item.recovered}}</span>
+            | Peoples todayCases : <span class="uk-text-warning">{{item.todayCases}}</span> | Peoples todayDeaths
+            : <span class="uk-text-danger">{{item.todayDeaths}}</span>
+          </p>
+        </div>
+      </div>
     </div>
-  </div> 
+  </div>
 </ng-template>
-</div>
+
 <div class="uk-position-bottom-right uk-position-fixed uk-padding-small">
   <!-- Scrol Back To Top -->
   <div *ngIf="isScrolled">
-  <button class="animated flipInX" mat-fab color="light" (click)="topFunction()" id="myBtn"><mat-icon>arrow_upward</mat-icon></button>
+    <button class="animated flipInX" mat-fab color="light" (click)="topFunction()" id="myBtn">
+      <mat-icon>arrow_upward</mat-icon>
+    </button>
   </div>
 </div>
