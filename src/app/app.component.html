@@ -8,10 +8,10 @@
   <div class="uk-position-center" uk-spinner></div>
 </div>
 <ng-template #thenBlock>
-  <div class="uk-column-1-1@s uk-column-1-2@m uk-column-1-2@l uk-padding-remove">
+  <div class="uk-column-1-1@s uk-column-1-2@m uk-column-1-2@l uk-column-1-2@xl uk-padding-remove">
   <div *ngFor="let item of listCountry | sortBy:'desc':'cases'">
-      <div uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 100; repeat: true" class="uk-padding-small">
-        <div class="uk-card uk-card-default uk-card-body uk-card-hover">
+      <div class="uk-flex uk-padding-small">
+        <div class="uk-card uk-card-default uk-card-body">
           <h2 class="uk-card-title Gfont">Country : {{item.country}}</h2>
           <p class="Gfont">
             Peoples active : <span class="uk-text-warning">{{item.active}}</span> | Peoples cases : <span
