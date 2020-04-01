@@ -16,6 +16,7 @@ export class AppComponent {
     'cases', 'deaths', 'active',
     'critical', 'todayCases',
     'todayDeaths']
+  searchCountry: string = ''
   listCountry: any = []
   isScrolled: boolean = false
   isNotData: boolean = false
