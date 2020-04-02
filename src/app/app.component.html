@@ -1,9 +1,9 @@
-<mat-toolbar color="light">
+<mat-toolbar color="light" uk-sticky>
   <mat-toolbar-row>
     <span class="Gfont">Covid19</span>
     <span class="example-spacer"></span>
     <div class="uk-margin Gfont uk-text-small">
-        <input class="uk-input uk-search-input" type="text" [(ngModel)]="searchCountry" placeholder="Search ...">
+      <input class="uk-input uk-search-input uk-h6" type="text" [(ngModel)]="searchCountry" placeholder="Search ...">
     </div>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>sort</mat-icon>
@@ -18,7 +18,7 @@
 </mat-menu>
 
 <div *ngIf="listCountry =='' && isNotData == false; else thenBlock">
-  <div class="uk-position-center" uk-spinner></div>
+  <span class="uk-position-center uk-text-secondary" uk-spinner></span>
 </div>
 <div *ngIf="isNotData" class="uk-position-center">
   <button mat-raised-button (click)="refreshPage()">Refresh</button>
