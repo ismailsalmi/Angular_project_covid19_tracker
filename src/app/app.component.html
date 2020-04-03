@@ -11,9 +11,6 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-
-<a href="/src/assets/apk/app-release.apk">Install apk</a>
-
 <mat-menu #menu="matMenu">
   <div *ngFor="let state of states">
     <button mat-menu-item (click)="onseSelectMenu(state)"><span class="Gfont">{{state | titlecase}}</span></button>
